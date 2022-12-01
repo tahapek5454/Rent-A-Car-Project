@@ -21,11 +21,11 @@ namespace ConsoleUI
             };
 
 
-            carManager.Add(car);
+            // carManager.Add(car);
 
-            foreach (var item in carManager.GetAll())
+            foreach (var item in carManager.GetCarDetails())
             {
-                Console.WriteLine(item.Id); 
+                Console.WriteLine(item.Id+"/"+item.CarName+"/"+item.ColorName+"/"+item.DailyPrice); 
 
             }
             
