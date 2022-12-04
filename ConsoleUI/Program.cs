@@ -23,6 +23,12 @@ namespace ConsoleUI
 
             // carManager.Add(car);
 
+            //foreach (var item in carManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(item.Id);
+
+            //}
+
             var result = carManager.GetCarDetails();
 
             if (result.Succes)
