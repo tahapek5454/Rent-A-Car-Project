@@ -66,8 +66,19 @@ namespace Business.Concrete
 
         public IResult Update(Car car)
         {
-            _carDal.Update(car);
-            return new SuccessResult(Messages.Updated);
+            try
+            {
+                _carDal.Update(car);
+                return new SuccessResult(Messages.Updated);
+
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Update de hata");
+                return new ErrorResult(Messages.NotUpdated);
+            }
+            
         }
     }
 }
