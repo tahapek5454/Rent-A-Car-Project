@@ -13,7 +13,14 @@ namespace Business.ValidationRules.FluentValidation
 
         public CarValidator()
         {
+            RuleFor(c => c.BrandId).NotEmpty();
+
+            RuleFor(c => c.ColorId).NotEmpty();
+
+            RuleFor(c => c.ModelYear).GreaterThan(1996);
+
             RuleFor(c => c.Description).MinimumLength(2);  // desciripton minumum 2 karakter
+
             RuleFor(c => c.DailyPrice).NotEmpty();
             RuleFor(c => c.DailyPrice).GreaterThan(0);    // Boyle Boyle ekleriz
             // when ile kosul da belirlenebilir
