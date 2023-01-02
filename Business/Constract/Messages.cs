@@ -18,5 +18,10 @@ namespace Business.Constract
         public static string NotListed = "Listeleme Islemi Yapilirken Bir Hata Ile Karsilasildi!";
         public static string Full = "Secitiginiz Arac Musteride Oldugundan Size Teslim Edemiyoruz";
         public static string NotDelivered = "Teslim Etme Islemi Yapilirken Bir Hata Ile Karsilasildi!";
+        public static string carsBrandOutOfRange= "Maksimum Ayni Markadan 10 Arac Bulunabilir";
+        public static string brandNameExist = "Eklemeye Calistiginiz Marka Sistemde Bulunmaktadir";
+        public static string ArriveBrandCountLimitToAddedCar = "Araba Eklemek icin Marka Sinirina Ulasildi Benim Ekledigim Kural Egitim Amacli";
+        public static string ColorExists = "Eklemeye Calistiginiz Renk Sistemde Bulunmaktadir";
+        public static string EmailAlreadyExists = "Email Sistemde Zaten Kayitli";
     }
 }
