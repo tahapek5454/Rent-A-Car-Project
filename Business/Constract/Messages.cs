@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constract
@@ -24,5 +26,11 @@ namespace Business.Constract
         public static string ColorExists = "Eklemeye Calistiginiz Renk Sistemde Bulunmaktadir";
         public static string EmailAlreadyExists = "Email Sistemde Zaten Kayitli";
         public static string SelectedCardIdNotExists = "Secilen Araba Id si mevcut degildir.";
+        public static string AuthorizationDenied = "Yetkiniz Yok.";
+        public static string UserRegistered="Kayit Islemi Basarili";
+        public static string UserNotFound="Kullanici Bulunamadi";
+        public static string PasswordError="Sifre Hatali";
+        public static string SuccessfulLogin = "Giris Basarili";
+        public static string AccessTokenCreated = "Giris Jetonu Olusturuldu";
     }
 }

@@ -5,6 +5,7 @@ using Business.CCS;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Helpers.FileHelper;
+using Core.Utilities.Helpers.Security.JWT;
 using Core.Utilities.Interceptors;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -21,7 +22,7 @@ namespace Business.DependencyResolvers.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             // uygulama ayaga kalktiginda calisacak kisim
-
+            //Dependency Injection. Yazılımda bağımlılıkların dışarıdan enjekte edilmesi işlemidir
             // biri ICarService isterse CarManagerVer
             builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
             builder.RegisterType<EfCarDal>().As<ICarDal>().SingleInstance();
@@ -47,6 +48,11 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
 
             builder.RegisterType<FileHeplerManager>().As<IFileHelper>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
+
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
+
 
 
 

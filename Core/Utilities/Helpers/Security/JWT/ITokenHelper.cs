@@ -7,7 +7,7 @@ namespace Core.Utilities.Helpers.Security.JWT
 {
     public interface ITokenHelper
     {
-        AccessToken CreateAccessToken(User user, List<OperationClaim> operationClaims);
+        AccessToken CreateToken(User user, List<OperationClaim> operationClaims);
         // Giris islemi gerceklestirdiginde iligli kullanıcın claimlerini bulup jwt ile donderecek
     }
 }

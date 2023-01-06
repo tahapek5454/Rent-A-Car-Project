@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Utilities.Helpers.Securtiy.EncryptionHelper
+namespace Core.Utilities.Helpers.Security.EncryptionHelper
 {
     public class SecurityKeyHelper
     {
-        public static SecurityKey CreteSecurityKey(string securityKey)
+        public static SecurityKey CreateSecurityKey(string securityKey)
         {
             // apide olusturdugumuz anahatarı simetrik key yaptik
             //JWT nin ihtyiac duydugu yapilar

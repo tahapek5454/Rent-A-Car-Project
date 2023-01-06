@@ -48,9 +48,24 @@ namespace Business.Concrete
             return new DataSuccessResult<List<User>>(_userDal.GetAll(), Messages.Listed);
         }
 
+        public IDataResult<User> GetByEmail(string email)
+        {
+            var data = _userDal.Get(u => u.Email == email);
+            if(data == null)
+            {
+                return new DataErrorResult<User>();
+            }
+            return new DataSuccessResult<User>(data);
+        }
+
         public IDataResult<User> GetById(int id)
         {
             return new DataSuccessResult<User>(_userDal.Get(u => u.Id == id), Messages.Listed);
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new DataSuccessResult<List<OperationClaim>>(_userDal.GetClaims(user), Messages.Listed);
         }
 
         [ValidationAspect(typeof(UserValidator))]
