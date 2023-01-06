@@ -1,4 +1,5 @@
 ﻿
+using Core.Entities.Concrete;
 using Core.EntityFramework;
 using Entities.Concrete;
 using System;
