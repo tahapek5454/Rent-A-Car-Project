@@ -12,13 +12,18 @@ namespace ConsoleUI
         {
             // CarTest();
 
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            //RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            Rental rental = new Rental { CarId = 3, CustomerId = 1, RentDate = DateTime.Now };
+            //Rental rental = new Rental { CarId = 3, CustomerId = 1, RentDate = DateTime.Now };
 
-            var result = rentalManager.Add(rental);
+            //var result = rentalManager.Add(rental);
 
-            Console.WriteLine(result.Message);
+            //Console.WriteLine(result.Message);
+
+
+
+           
+
 
 
 
@@ -28,45 +33,45 @@ namespace ConsoleUI
 
         }
 
-        private static void CarTest()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            Car car = new Car
-            {
-                BrandId = 3,
-                ColorId = 2,
-                DailyPrice = 300,
-                Description = "Wowwww",
-                ModelYear = 2010
-            };
+        //private static void CarTest()
+        //{
+        //    //CarManager carManager = new CarManager(new EfCarDal(),);
+        //    Car car = new Car
+        //    {
+        //        BrandId = 3,
+        //        ColorId = 2,
+        //        DailyPrice = 300,
+        //        Description = "Wowwww",
+        //        ModelYear = 2010
+        //    };
 
 
-            // carManager.Add(car);
+        //    // carManager.Add(car);
 
-            //foreach (var item in carManager.GetAll().Data)
-            //{
-            //    Console.WriteLine(item.Id);
+        //    //foreach (var item in carManager.GetAll().Data)
+        //    //{
+        //    //    Console.WriteLine(item.Id);
 
-            //}
+        //    //}
 
-            var result = carManager.GetCarDetails();
+        //    var result = carManager.GetCarDetails();
 
-            if (result.Succes)
-            {
-                Console.WriteLine(result.Message);
-                foreach (var item in result.Data)
-                {
+        //    if (result.Succes)
+        //    {
+        //        Console.WriteLine(result.Message);
+        //        foreach (var item in result.Data)
+        //        {
 
-                    Console.WriteLine(item.Id + "/" + item.CarName + "/" + item.ColorName + "/" + item.DailyPrice);
+        //            Console.WriteLine(item.Id + "/" + item.CarName + "/" + item.ColorName + "/" + item.DailyPrice);
 
-                }
+        //        }
 
-            }
-            else
-            {
-                Console.WriteLine(result.Succes);
-                Console.WriteLine(result.Message);
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(result.Succes);
+        //        Console.WriteLine(result.Message);
+        //    }
+        //}
     }
 }

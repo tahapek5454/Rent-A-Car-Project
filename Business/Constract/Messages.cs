@@ -23,5 +23,6 @@ namespace Business.Constract
         public static string ArriveBrandCountLimitToAddedCar = "Araba Eklemek icin Marka Sinirina Ulasildi Benim Ekledigim Kural Egitim Amacli";
         public static string ColorExists = "Eklemeye Calistiginiz Renk Sistemde Bulunmaktadir";
         public static string EmailAlreadyExists = "Email Sistemde Zaten Kayitli";
+        public static string SelectedCardIdNotExists = "Secilen Araba Id si mevcut degildir.";
     }
 }

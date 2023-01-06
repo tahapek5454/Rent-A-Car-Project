@@ -69,6 +69,8 @@ namespace WebAPI
 
             app.UseRouting();
 
+            app.UseStaticFiles(); // image
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
