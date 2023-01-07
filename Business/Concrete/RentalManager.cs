@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
+using Core.Aspects.Autofac.Transaction;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -20,6 +21,7 @@ namespace Business.Concrete
         }
 
         //[SecuredOperation("")]
+        [TransactionScopeAspect]
         public IResult Add(Rental rental)
         {
             //?
@@ -42,7 +44,8 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Added);
         }
 
-       // [SecuredOperation("")]
+        // [SecuredOperation("")]
+        [TransactionScopeAspect]
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
@@ -50,6 +53,7 @@ namespace Business.Concrete
         }
 
         //[SecuredOperation("")]
+        [TransactionScopeAspect]
         public IResult Deliver(int carId)
         {
            var allCarRental = _rentalDal.GetAll(r => r.CarId == carId);
@@ -104,6 +108,7 @@ namespace Business.Concrete
         }
 
         //[SecuredOperation("")]
+        [TransactionScopeAspect]
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);

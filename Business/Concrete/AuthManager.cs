@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constract;
+using Core.Aspects.Autofac.Transaction;
 using Core.Entities.Concrete;
 using Core.Utilities.Helpers.Security.JWT;
 using Core.Utilities.Helpers.Securtiy.HashingHelper;
@@ -23,6 +24,7 @@ namespace Business.Concrete
             _tokenHelper = tokenHelper;
         }
 
+        [TransactionScopeAspect]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordHash, passwordSalt;

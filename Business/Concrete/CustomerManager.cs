@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constract;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -21,6 +22,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CustomerValidator))]
+        [TransactionScopeAspect]
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);
@@ -28,6 +30,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CustomerValidator))]
+        [TransactionScopeAspect]
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
@@ -45,6 +48,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CustomerValidator))]
+        [TransactionScopeAspect]
         public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);

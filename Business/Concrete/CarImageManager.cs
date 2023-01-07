@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
+using Core.Aspects.Autofac.Transaction;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.FileHelper;
 using Core.Utilities.Results.Abstract;
@@ -25,6 +26,7 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("admin")]
+        [TransactionScopeAspect]
         public IResult Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckIfCarImageLimit(carImage.CarId));
@@ -39,6 +41,7 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("admin")]
+        [TransactionScopeAspect]
         public IResult Delete(CarImage carImage)
         {
             _fileHelper.Delete(PathConstants.ImagesPath + carImage.ImagePath);
@@ -47,6 +50,7 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("admin")]
+        [TransactionScopeAspect]
         public IResult Update(IFormFile file, CarImage carImage)
         {
             carImage.ImagePath = _fileHelper.Update(file, PathConstants.ImagesPath + carImage.ImagePath, PathConstants.ImagesPath);

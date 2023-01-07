@@ -2,6 +2,7 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
@@ -25,6 +26,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
+        [TransactionScopeAspect]
         public IResult Add(Brand brand)
         {
             var result = BusinessRules.Run(CheckBrandNameExistsCorrect(brand.Name));
@@ -41,6 +43,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
+        [TransactionScopeAspect]
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
@@ -62,6 +65,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
+        [TransactionScopeAspect]
         public IResult Update(Brand brand)
         {
 

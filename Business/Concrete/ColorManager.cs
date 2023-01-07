@@ -2,6 +2,7 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
@@ -25,6 +26,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(ColorValidator))]
+        [TransactionScopeAspect]
         public IResult Add(Color color)
         {
             var result = BusinessRules.Run(CheckColorNameExistsCorrect(color.Name));
@@ -38,6 +40,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(ColorValidator))]
+        [TransactionScopeAspect]
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
@@ -58,6 +61,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(ColorValidator))]
+        [TransactionScopeAspect]
         public IResult Update(Color color)
         {
 

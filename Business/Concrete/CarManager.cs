@@ -3,6 +3,7 @@ using Business.BusinessAspects.Autofac;
 using Business.Constract;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Cache;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
@@ -31,6 +32,7 @@ namespace Business.Concrete
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
+        [TransactionScopeAspect]
         public IResult Add(Car car)
         {
             // kurdugumuz ValidationAspecte CarValidator a gore kurdugumuz sistemler sayesinde ilgili parametreyi de alarak islem yap dedik
@@ -53,6 +55,7 @@ namespace Business.Concrete
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
+        [TransactionScopeAspect]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
@@ -97,6 +100,7 @@ namespace Business.Concrete
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
+        [TransactionScopeAspect]
         public IResult Update(Car car)
         {
             try
