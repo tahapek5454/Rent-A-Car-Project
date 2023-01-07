@@ -2,6 +2,7 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Authentication;
 using Core.Aspects.Autofac.Cache;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
@@ -18,6 +19,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    [AuthenticationAspect]
     public class CarManager : ICarService
     {
         ICarDal _carDal;
@@ -28,7 +30,7 @@ namespace Business.Concrete
             _carDal = carDal;
             _brandService = brandService;
         }
-
+     
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]

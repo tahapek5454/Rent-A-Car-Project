@@ -1,5 +1,6 @@
 ﻿
 using Castle.DynamicProxy;
+using Core.Aspects.Autofac.Authentication;
 using Core.Aspects.Autofac.Performance;
 using System;
 using System.Collections.Generic;

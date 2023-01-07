@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
+using Core.Aspects.Autofac.Authentication;
 using Core.Aspects.Autofac.Transaction;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -12,6 +13,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    [AuthenticationAspect]
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
@@ -20,7 +22,6 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
-        //[SecuredOperation("")]
         [TransactionScopeAspect]
         public IResult Add(Rental rental)
         {
@@ -44,7 +45,6 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Added);
         }
 
-        // [SecuredOperation("")]
         [TransactionScopeAspect]
         public IResult Delete(Rental rental)
         {
@@ -52,7 +52,6 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Deleted);
         }
 
-        //[SecuredOperation("")]
         [TransactionScopeAspect]
         public IResult Deliver(int carId)
         {
@@ -82,13 +81,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Delivered);
         }
 
-       // [SecuredOperation("")]
         public IDataResult<List<Rental>> GetAll()
         {
             return new DataSuccessResult<List<Rental>>(_rentalDal.GetAll(), Messages.Listed);
         }
 
-        //[SecuredOperation("")]
         public IDataResult<List<Rental>> GetByCarId(int id)
         {
             var result = _rentalDal.GetAll(r => r.CarId == id);
@@ -97,7 +94,6 @@ namespace Business.Concrete
             return new DataSuccessResult<List<Rental>>(result, Messages.Listed);
         }
 
-       // [SecuredOperation("")]
         public IDataResult<Rental> GetById(int id)
         {
             var result = _rentalDal.Get(r => r.Id == id);
@@ -107,7 +103,6 @@ namespace Business.Concrete
             return new DataSuccessResult<Rental>(result, Messages.Listed);
         }
 
-        //[SecuredOperation("")]
         [TransactionScopeAspect]
         public IResult Update(Rental rental)
         {

@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constract;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Authentication;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
@@ -13,6 +14,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    [AuthenticationAspect]
     public class CustomerManager : ICustomerService
     {
         ICustomerDal _customerDal;

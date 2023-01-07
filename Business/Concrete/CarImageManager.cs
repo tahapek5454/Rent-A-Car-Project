@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
+using Core.Aspects.Autofac.Authentication;
 using Core.Aspects.Autofac.Transaction;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.FileHelper;
@@ -15,6 +16,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    [AuthenticationAspect]
     public class CarImageManager:ICarImageService
     {
         ICarImageDal _carImageDal;
@@ -58,7 +60,6 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Updated);
         }
 
-        //[SecuredOperation("")]
         public IDataResult<List<CarImage>> GetByCarId(int carId)
         {
             var result = BusinessRules.Run(CheckCarImage(carId));
@@ -69,13 +70,11 @@ namespace Business.Concrete
             return new DataSuccessResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId));
         }
 
-        //[SecuredOperation("")]
         public IDataResult<CarImage> GetByImageId(int imageId)
         {
             return new DataSuccessResult<CarImage>(_carImageDal.Get(c => c.Id == imageId), Messages.Listed);
         }
 
-       // [SecuredOperation("")]
         public IDataResult<List<CarImage>> GetAll()
         {
             return new DataSuccessResult<List<CarImage>>(_carImageDal.GetAll(), Messages.Listed);

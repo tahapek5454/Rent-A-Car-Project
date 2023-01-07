@@ -2,6 +2,7 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Authentication;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
@@ -15,6 +16,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    [AuthenticationAspect]
     public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;
@@ -51,13 +53,11 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Deleted);
         }
 
-        //[SecuredOperation("")]
         public IDataResult<List<Brand>> GetAll()
         {
             return new DataSuccessResult<List<Brand>>(_brandDal.GetAll(), Messages.Listed);
         }
 
-        //[SecuredOperation("")]
         public IDataResult<Brand> GetById(int id)
         {
             return new DataSuccessResult<Brand>(_brandDal.Get(b => b.Id == id), Messages.Listed);
