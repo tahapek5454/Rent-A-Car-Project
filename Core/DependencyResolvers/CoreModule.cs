@@ -1,10 +1,12 @@
-﻿using Core.CrossCuttingConcerns.Caching.Abstract;
+﻿using Autofac.Core;
+using Core.CrossCuttingConcerns.Caching.Abstract;
 using Core.CrossCuttingConcerns.Caching.Concrete.Microsoft;
 using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Core.DependencyResolvers
@@ -22,6 +24,8 @@ namespace Core.DependencyResolvers
 
             serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>();
             serviceCollection.AddMemoryCache(); //IMemoryCache .net sagliyordu zaten adamlar kısa yoldan injection cozmus
+
+            serviceCollection.AddSingleton<Stopwatch>();
         }
     }
 }
