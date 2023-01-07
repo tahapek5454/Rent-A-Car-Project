@@ -2,6 +2,7 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constract;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Cache;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
@@ -29,6 +30,7 @@ namespace Business.Concrete
 
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             // kurdugumuz ValidationAspecte CarValidator a gore kurdugumuz sistemler sayesinde ilgili parametreyi de alarak islem yap dedik
@@ -50,37 +52,43 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.Deleted);
         }
 
-        [SecuredOperation("")]
+        //[SecuredOperation("")]
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             return new DataSuccessResult<List<Car>>(_carDal.GetAll(), Messages.Listed);
         }
 
-        [SecuredOperation("")]
+        //[SecuredOperation("")]
+        [CacheAspect]
         public IDataResult<List<Car>> GetByColorId(int id)
         {
             return new DataSuccessResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id), Messages.Listed);
         }
 
-        [SecuredOperation("")]
+        //[SecuredOperation("")]
+        [CacheAspect]
         public IDataResult<Car> GetById(int id)
         {
             return new DataSuccessResult<Car>(_carDal.Get(c => c.Id == id), Messages.Listed);
         }
 
-        [SecuredOperation("")]
+        //[SecuredOperation("")]
+        [CacheAspect]
         public IDataResult<List<CarDetailsDTO>> GetCarDetails()
         {
             return new DataSuccessResult<List<CarDetailsDTO>>(_carDal.GetCarDetails(), Messages.Listed);
         }
 
-        [SecuredOperation("")]
+        //[SecuredOperation("")]
+        [CacheAspect]
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
             return new DataSuccessResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id), Messages.Listed);
@@ -88,6 +96,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             try

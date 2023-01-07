@@ -44,13 +44,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Deleted);
         }
 
-        [SecuredOperation("")]
+        //[SecuredOperation("")]
         public IDataResult<List<Color>> GetAll()
         {
             return new DataSuccessResult<List<Color>>(_colorDal.GetAll(), Messages.Listed);
         }
 
-        [SecuredOperation("")]
+       // [SecuredOperation("")]
         public IDataResult<Color> GetById(int id)
         {
             return new DataSuccessResult<Color>(_colorDal.Get(c => c.Id == id), Messages.Listed);

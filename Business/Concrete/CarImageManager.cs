@@ -54,7 +54,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Updated);
         }
 
-        [SecuredOperation("")]
+        //[SecuredOperation("")]
         public IDataResult<List<CarImage>> GetByCarId(int carId)
         {
             var result = BusinessRules.Run(CheckCarImage(carId));
@@ -65,13 +65,13 @@ namespace Business.Concrete
             return new DataSuccessResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId));
         }
 
-        [SecuredOperation("")]
+        //[SecuredOperation("")]
         public IDataResult<CarImage> GetByImageId(int imageId)
         {
             return new DataSuccessResult<CarImage>(_carImageDal.Get(c => c.Id == imageId), Messages.Listed);
         }
 
-        [SecuredOperation("")]
+       // [SecuredOperation("")]
         public IDataResult<List<CarImage>> GetAll()
         {
             return new DataSuccessResult<List<CarImage>>(_carImageDal.GetAll(), Messages.Listed);

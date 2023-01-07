@@ -1,4 +1,6 @@
-﻿using Core.Utilities.IoC;
+﻿using Core.CrossCuttingConcerns.Caching.Abstract;
+using Core.CrossCuttingConcerns.Caching.Concrete.Microsoft;
+using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -17,6 +19,9 @@ namespace Core.DependencyResolvers
             // Aspect calisirken autofacten yararlanamadigi icin aspectten olusan dependencyi 'httpContextAccessor' burda cozucez
             // Hem Aspect olması hem de genel her projede olması bizi bu duruma goturdu
             serviceCollection.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>();
+            serviceCollection.AddMemoryCache(); //IMemoryCache .net sagliyordu zaten adamlar kısa yoldan injection cozmus
         }
     }
 }
