@@ -20,7 +20,7 @@ namespace Business.BusinessAspects.Autofac
 
         public SecuredOperation(string roles)
         {
-            _roles = roles.Split(','); //rolleri splitledik aldik
+            _roles = roles.Replace(" ", "").Split(','); //rolleri splitledik aldik
             // aspect injectionları yakalayamaz o yuzden ona ozel tool yaptık
             _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
 
@@ -36,7 +36,8 @@ namespace Business.BusinessAspects.Autofac
                     return;
                 }
             }
-            throw new Exception(Messages.AuthorizationDenied);
+            if (_roles[0].Length == 0) throw new Exception(Messages.EnterAuthantication);
+            else throw new Exception(Messages.AuthorizationDenied);
         }
     }
 }

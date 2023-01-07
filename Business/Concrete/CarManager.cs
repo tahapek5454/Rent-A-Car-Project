@@ -56,26 +56,31 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Deleted);
         }
 
+        [SecuredOperation("")]
         public IDataResult<List<Car>> GetAll()
         {
             return new DataSuccessResult<List<Car>>(_carDal.GetAll(), Messages.Listed);
         }
 
+        [SecuredOperation("")]
         public IDataResult<List<Car>> GetByColorId(int id)
         {
             return new DataSuccessResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id), Messages.Listed);
         }
 
+        [SecuredOperation("")]
         public IDataResult<Car> GetById(int id)
         {
             return new DataSuccessResult<Car>(_carDal.Get(c => c.Id == id), Messages.Listed);
         }
 
+        [SecuredOperation("")]
         public IDataResult<List<CarDetailsDTO>> GetCarDetails()
         {
             return new DataSuccessResult<List<CarDetailsDTO>>(_carDal.GetCarDetails(), Messages.Listed);
         }
 
+        [SecuredOperation("")]
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
             return new DataSuccessResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id), Messages.Listed);

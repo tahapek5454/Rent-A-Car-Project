@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constract;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -18,6 +19,7 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
+        [SecuredOperation("")]
         public IResult Add(Rental rental)
         {
             //?
@@ -40,12 +42,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Added);
         }
 
+        [SecuredOperation("")]
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
             return new SuccessResult(Messages.Deleted);
         }
 
+        [SecuredOperation("")]
         public IResult Deliver(int carId)
         {
            var allCarRental = _rentalDal.GetAll(r => r.CarId == carId);
@@ -74,11 +78,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Delivered);
         }
 
+        [SecuredOperation("")]
         public IDataResult<List<Rental>> GetAll()
         {
             return new DataSuccessResult<List<Rental>>(_rentalDal.GetAll(), Messages.Listed);
         }
 
+        [SecuredOperation("")]
         public IDataResult<List<Rental>> GetByCarId(int id)
         {
             var result = _rentalDal.GetAll(r => r.CarId == id);
@@ -87,6 +93,7 @@ namespace Business.Concrete
             return new DataSuccessResult<List<Rental>>(result, Messages.Listed);
         }
 
+        [SecuredOperation("")]
         public IDataResult<Rental> GetById(int id)
         {
             var result = _rentalDal.Get(r => r.Id == id);
@@ -96,6 +103,7 @@ namespace Business.Concrete
             return new DataSuccessResult<Rental>(result, Messages.Listed);
         }
 
+        [SecuredOperation("")]
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);

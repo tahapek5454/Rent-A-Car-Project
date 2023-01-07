@@ -48,11 +48,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Deleted);
         }
 
+        [SecuredOperation("")]
         public IDataResult<List<Brand>> GetAll()
         {
             return new DataSuccessResult<List<Brand>>(_brandDal.GetAll(), Messages.Listed);
         }
 
+        [SecuredOperation("")]
         public IDataResult<Brand> GetById(int id)
         {
             return new DataSuccessResult<Brand>(_brandDal.Get(b => b.Id == id), Messages.Listed);

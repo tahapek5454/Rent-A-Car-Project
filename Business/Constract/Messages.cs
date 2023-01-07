@@ -32,5 +32,6 @@ namespace Business.Constract
         public static string PasswordError="Sifre Hatali";
         public static string SuccessfulLogin = "Giris Basarili";
         public static string AccessTokenCreated = "Giris Jetonu Olusturuldu";
+        public static string EnterAuthantication = "Sisteme Giris Yapmaniz Gerekmektedir.";
     }
 }
