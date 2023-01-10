@@ -7,13 +7,14 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Concrete
 {
-    [AuthenticationAspect]
+    //[AuthenticationAspect]
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
@@ -28,6 +29,7 @@ namespace Business.Concrete
             //?
             var selectedCarId = rental.CarId;
             var selectedCarRentals = this.GetByCarId(selectedCarId).Data;
+            rental.RentDate = DateTime.Now;
 
             if (selectedCarRentals == null)
             {
@@ -101,6 +103,11 @@ namespace Business.Concrete
             if (result == null) return new DataErrorResult<Rental>(Messages.NotListed);
 
             return new DataSuccessResult<Rental>(result, Messages.Listed);
+        }
+
+        public IDataResult<List<RentalDetailsDTO>> GetRentalDetails()
+        {
+            return new DataSuccessResult<List<RentalDetailsDTO>>(_rentalDal.GetRentalDetails(), Messages.Listed);
         }
 
         [TransactionScopeAspect]

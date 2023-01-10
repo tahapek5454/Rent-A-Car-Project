@@ -16,7 +16,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [AuthenticationAspect]
+    //[AuthenticationAspect]
     public class CarImageManager:ICarImageService
     {
         ICarImageDal _carImageDal;

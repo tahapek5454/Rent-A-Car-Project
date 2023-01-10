@@ -14,7 +14,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [AuthenticationAspect]
+    //[AuthenticationAspect]
     public class CustomerManager : ICustomerService
     {
         ICustomerDal _customerDal;

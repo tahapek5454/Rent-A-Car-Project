@@ -16,7 +16,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [AuthenticationAspect]
+    //[AuthenticationAspect]
     public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;
