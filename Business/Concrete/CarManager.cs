@@ -19,7 +19,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [AuthenticationAspect]
+    //[AuthenticationAspect]
     public class CarManager : ICarService
     {
         ICarDal _carDal;

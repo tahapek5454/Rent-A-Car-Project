@@ -63,6 +63,7 @@ namespace WebAPI
 
 
 
+            services.AddCors(); // farklý yerlerden gelen istekleri kabul etme 'Angular Project'
 
 
             // jwt token kullancagimizi soyluyoruz
@@ -101,6 +102,8 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader()); //'Angulardan' istek atmak izin verdik
 
             app.UseHttpsRedirection();
 
