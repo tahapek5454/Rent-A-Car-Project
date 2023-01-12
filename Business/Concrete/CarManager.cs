@@ -92,11 +92,22 @@ namespace Business.Concrete
             return new DataSuccessResult<List<CarDetailsDTO>>(_carDal.GetCarDetails(), Messages.Listed);
         }
 
+        public IDataResult<List<CarDetailsDTO>> GetCarDetailsByBrandId(int id)
+        {
+            return new DataSuccessResult<List<CarDetailsDTO>>(_carDal.GetCarDetailsByBrandId(id), Messages.Listed);
+        }
+
+        public IDataResult<List<CarDetailsDTO>> GetCarDetailsByColorId(int id)
+        {
+            return new DataSuccessResult<List<CarDetailsDTO>>(_carDal.GetCarDetailsByColorId(id), Messages.Listed);
+
+        }
+
         //[SecuredOperation("")]
         [CacheAspect]
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return new DataSuccessResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id), Messages.Listed);
+            return new DataSuccessResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id), Messages.Listed);
         }
 
         [SecuredOperation("admin")]
@@ -140,5 +151,7 @@ namespace Business.Concrete
             return new SuccessResult();
           
         }
+
+        
     }
 }
