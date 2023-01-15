@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpPost("DeleteCarImage")]
         public IActionResult DeleteCarImage(CarImage carImage)
@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpPost("UpdateCarImage")]
         public IActionResult UpdateCarImage([FromForm] IFormFile file, [FromForm] CarImage carImage)
@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpGet("GetAllCarImages")]
         public IActionResult GetAllCarImages()
@@ -53,7 +53,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
         [HttpGet("GetByCarIdCarImage")]
         public IActionResult GetByCarIdCarImage(CarImage carImage)
@@ -63,7 +63,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return Ok(result);
+            return BadRequest(result);
         }
         [HttpGet("GetByIdCarImage")]
         public IActionResult GetByIdCarImage(CarImage carImage)
@@ -73,7 +73,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
     }
 }

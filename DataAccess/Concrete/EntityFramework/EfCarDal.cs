@@ -17,16 +17,17 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (RentACarContext context = new RentACarContext())
             {
-                var result =  from c in context.Cars
-                              join co in context.Colors
-                              on c.ColorId equals co.Id
-                              join b in context.Brands
-                              on c.BrandId equals b.Id
-                              join i in context.CarImages 
-                              on c.Id equals i.CarId into Details
-                              from m in Details.DefaultIfEmpty()
-                              select new CarDetailsDTO
-                              {
+                var result = from c in context.Cars
+                             join co in context.Colors
+                             on c.ColorId equals co.Id
+                             join b in context.Brands
+                             on c.BrandId equals b.Id
+                             join i in context.CarImages
+                             on c.Id equals i.CarId into Details
+                             from m in Details.DefaultIfEmpty()
+                             select new CarDetailsDTO
+                             {
+                                  CarId = c.Id,
                                   BrandName = b.Name,
                                   CarName = b.Name,
                                   ColorName = co.Name,
@@ -51,6 +52,7 @@ namespace DataAccess.Concrete.EntityFramework
                              where b.Id == brandId
                              select new CarDetailsDTO
                              {
+                                 CarId = c.Id,
                                  BrandName = b.Name,
                                  CarName = b.Name,
                                  ColorName = co.Name,
@@ -73,7 +75,7 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.BrandId equals b.Id
                              where co.Id == colorId
                              select new CarDetailsDTO
-                             {
+                             {   CarId = c.Id,
                                  BrandName = b.Name,
                                  CarName = b.Name,
                                  ColorName = co.Name,

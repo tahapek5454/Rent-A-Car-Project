@@ -24,11 +24,11 @@ namespace WebAPI.Controllers
 
             if (result.Succes)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
             else
             {
-                return BadRequest(result.Message);  
+                return BadRequest(result);  
             }
 
         }
@@ -40,11 +40,11 @@ namespace WebAPI.Controllers
 
             if (result.Succes)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
 
         }
@@ -60,7 +60,7 @@ namespace WebAPI.Controllers
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
 
         }
@@ -76,7 +76,7 @@ namespace WebAPI.Controllers
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
 
         }
@@ -92,7 +92,7 @@ namespace WebAPI.Controllers
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
 
         }
@@ -108,7 +108,7 @@ namespace WebAPI.Controllers
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
 
         }
@@ -120,7 +120,7 @@ namespace WebAPI.Controllers
 
             if(result.Succes) return Ok(result);
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpGet("GetCarDetailsByColorId")]
@@ -130,7 +130,7 @@ namespace WebAPI.Controllers
 
             if (result.Succes) return Ok(result);
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpGet("GetCarsByBrandId")]
@@ -144,7 +144,7 @@ namespace WebAPI.Controllers
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
 
         }
@@ -160,7 +160,7 @@ namespace WebAPI.Controllers
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
 
         }

@@ -30,7 +30,7 @@ namespace Business.Concrete
             _carDal = carDal;
             _brandService = brandService;
         }
-     
+
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]

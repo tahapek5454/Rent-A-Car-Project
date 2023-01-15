@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
             var data = _accountService.AddPrice(price);
             if(data.Succes) return Ok(data);
 
-            return BadRequest(data.Message);
+            return BadRequest(data);
         }
 
         [HttpGet("GetTotalPrice")]
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
             var data = _accountService.GetTotalPrice();
             if (data.Succes) return Ok(data);
 
-            return BadRequest(data.Message);
+            return BadRequest(data);
 
         }
     }
